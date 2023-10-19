@@ -5,11 +5,11 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "test":"vitest",
+    "test": "vitest",
     "start": "node dist/app.js",
     "dev": "concurrently \"tsc -w\" \"nodemon dist/app.js\"",
-    "lint": "eslint --ignore-path .gitignore --fix src/*.ts",
-    "format": "prettier --ignore-path .gitignore --write src/*.ts",
+    "lint": "eslint --ignore-path .gitignore --fix src/**/*.ts",
+    "format": "prettier --ignore-path .gitignore --write src/**/*.ts",
     "prepare": "husky install"
   },
   "keywords": [],

@@ -22,6 +22,7 @@ module.exports = {
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
+    "ignorePatterns": ["vite.config.js"],
     "rules": {
     }
 }

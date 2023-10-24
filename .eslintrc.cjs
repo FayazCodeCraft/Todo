@@ -24,12 +24,5 @@ module.exports = {
     },
     "ignorePatterns": ["vite.config.js"],
     "rules": {
-        "@typescript-eslint/no-misused-promises": [
-            "error",
-            {
-              "checksVoidReturn": false
-            }
-          ],
-           "@typescript-eslint/strict-boolean-expressions": "off",
     }
 }

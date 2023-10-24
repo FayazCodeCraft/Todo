@@ -2,7 +2,6 @@ import express, { type Request, type Response } from "express";
 import todos from "./routes/todos.js";
 import { notFound } from "./middlewares/not-found.js";
 import { apiKeyMiddleware } from "./middlewares/authorization.js";
-import { errorHandler } from "./middlewares/error-handler.js";
 
 const app = express();
 
@@ -24,7 +23,6 @@ app.get("/", (req: Request, res: Response) => {
 // routes
 app.use("/api/v1/todos", todos);
 app.use(notFound);
-app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}.....`);

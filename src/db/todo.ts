@@ -60,12 +60,27 @@ export class TodoManager implements TodoMangerInterface {
    */
   async createTodo(newTodo: Todo): Promise<void> {
     await this.db.read();
-    const idExist = this.db.data.todos.find((dbTodo) => dbTodo.id === newTodo.id);
+    const idExist = this.db.data.todos.find(
+      (dbTodo) => dbTodo.id === newTodo.id,
+    );
     if (idExist === undefined) {
       this.db.data.todos.push({ ...newTodo });
       await this.db.write();
     } else {
       throw createCustomError(`Id: ${newTodo.id} already exists`, 400);
     }
+  }
+
+  /**
+   * Retrieve a subset of todos from the database.
+   * @param startIndex - The start index for selecting todos.
+   * @param endIndex  -  The end index for selecting todos.
+   * @returns A promise that resolves with an array of selected todos.
+   */
+  async getTodos(startIndex: number, endIndex: number): Promise<Todo[]> {
+    await this.db.read();
+    const allTodos = this.db.data.todos;
+    const selectedTodos = allTodos.slice(startIndex, endIndex);
+    return selectedTodos;
   }
 }

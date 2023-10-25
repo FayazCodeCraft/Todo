@@ -1,4 +1,4 @@
-import {type TodoInterface as Todo } from "./todo.js";
+import { type TodoInterface as Todo } from "./todo.js";
 
 /**
  * This interface defines the contract for a Todo Manager.
@@ -21,4 +21,11 @@ export interface TodoMangerInterface {
    * @returns A Promise that resolves when the Todo is created.
    */
   createTodo: (newTodo: Todo) => Promise<void>;
+  /**
+   * Retrieve a subset of todos from the database.
+   * @param startIndex - The start index for selecting todos.
+   * @param endIndex  -  The end index for selecting todos.
+   * @returns A promise that resolves with an array of selected todos.
+   */
+  getTodos: (startIndex: number, endIndex: number) => Promise<Todo[]>;
 }

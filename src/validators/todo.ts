@@ -1,9 +1,6 @@
 import zod from "zod";
 
 const todoSchema = (() => {
-  // Initialized a variable 'id' to 1, used for generating unique IDs.
-  let id = 1;
-
   return zod.object({
     // 'id' field: Ensure it's a positive integer and use a default value if not provided.
     id: zod
@@ -12,12 +9,11 @@ const todoSchema = (() => {
       .refine((value) => value >= 1, {
         message: "ID must be a positive integer",
       })
-      .default(() => id++),
-
+      .default(()=>1),
     // 'title' field: Validate the length of the title.
     title: zod
       .string()
-      .min(5, { message: "Title must be at least 5 character long" })
+      .min(5, { message: "Title must be at least 5 characters long" })
       .max(50, { message: "Title must be at most 50 characters long" }),
 
     // 'description' field: Limit the maximum length of the description.
@@ -38,6 +34,8 @@ const todoSchema = (() => {
     // 'created_At' and 'updated_At' fields: Set default date values.
     created_At: zod.date().default(() => new Date()),
     updated_At: zod.date().default(() => new Date()),
+
+    completed: zod.boolean().default(() => false),
   });
 })();
 

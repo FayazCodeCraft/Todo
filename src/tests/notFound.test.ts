@@ -1,6 +1,6 @@
 import type express from "express";
 import request from "supertest";
-import app from "../app";
+import app from "../app.js";
 import { apiKeyMiddleware } from "../middlewares/authorization.js";
 
 describe("Test : for invalid routes", () => {

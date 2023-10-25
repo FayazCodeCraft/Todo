@@ -1,0 +1,67 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Pay Bills",
+      "description": "Settle the utility and credit card bills",
+      "dueDate": "2023-12-10",
+      "created_At": "2023-10-23T03:38:03.620Z",
+      "updated_At": "2023-10-23T03:38:03.620Z",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "title": "Prepare for Meeting",
+      "description": "Gather presentation materials for the team meeting",
+      "dueDate": "2023-12-25",
+      "created_At": "2023-10-23T03:38:27.043Z",
+      "updated_At": "2023-10-23T03:38:27.043Z",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "title": "Math Homework",
+      "description": "Solve exercises 1-5 on page 43",
+      "dueDate": "2023-12-29",
+      "created_At": "2023-10-23T03:38:48.276Z",
+      "updated_At": "2023-10-23T03:38:48.276Z",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "title": "Exercise",
+      "description": "Complete a 30-minute cardio workout",
+      "dueDate": "2023-12-26",
+      "created_At": "2023-10-23T03:39:06.480Z",
+      "updated_At": "2023-10-23T03:39:06.480Z",
+      "completed": false
+    },
+    {
+      "id": 5,
+      "title": "Read a Book",
+      "description": "Read the first five chapters of 'The Great Gatsby'",
+      "dueDate": "2023-11-15",
+      "created_At": "2023-10-25T03:54:38.856Z",
+      "updated_At": "2023-10-25T03:54:38.856Z",
+      "completed": false
+    },
+    {
+      "id": 6,
+      "title": "Read a Book",
+      "description": "Read the first ten chapters of 'The Great Gatsby'",
+      "dueDate": "2023-11-20",
+      "created_At": "2023-10-25T04:01:47.953Z",
+      "updated_At": "2023-10-25T04:01:47.953Z",
+      "completed": false
+    },
+    {
+      "id": 7,
+      "title": "Complete Homework",
+      "description": "Finish the math and history assignments",
+      "dueDate": "2023-11-05",
+      "created_At": "2023-10-25T04:20:58.379Z",
+      "updated_At": "2023-10-25T04:20:58.379Z",
+      "completed": false
+    }
+  ]
+}

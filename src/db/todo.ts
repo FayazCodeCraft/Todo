@@ -2,7 +2,6 @@ import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
 import { type TodoInterface as Todo } from "../interfaces/todo.js";
 import { type TodoDataBaseData as Todos } from "../interfaces/todo-db.js";
-import { createCustomError } from "../errors/custom-error.js";
 import todoSchema from "../validators/todo.js";
 import { type TodoMangerInterface } from "../interfaces/todo-manager.js";
 
@@ -56,9 +55,9 @@ export class TodoManager implements TodoMangerInterface {
   /**
    * Creates a new todo item and adds it to the database.
    * @param {Todo} newTodo - The new todo item to be created.
-   * @returns A Promise that resolves when the operation is completed, throws CustomError if a Todo with the same ID already exists in the database
+   * @returns A promise that resolves to true if the todo was created successfully or false if the ID already exists.
    */
-  async createTodo(newTodo: Todo): Promise<void> {
+  async createTodo(newTodo: Todo): Promise<boolean> {
     await this.db.read();
     const idExist = this.db.data.todos.find(
       (dbTodo) => dbTodo.id === newTodo.id,
@@ -66,8 +65,9 @@ export class TodoManager implements TodoMangerInterface {
     if (idExist === undefined) {
       this.db.data.todos.push({ ...newTodo });
       await this.db.write();
+      return true;
     } else {
-      throw createCustomError(`Id: ${newTodo.id} already exists`, 400);
+      return false;
     }
   }
 
@@ -82,5 +82,16 @@ export class TodoManager implements TodoMangerInterface {
     const allTodos = this.db.data.todos;
     const selectedTodos = allTodos.slice(startIndex, endIndex);
     return selectedTodos;
+  }
+
+  /**
+   * Retrieve a todo item by its ID from the database.
+   * @param todoId - The unique identifier of the todo item to retrieve.
+   * @returns  A Promise that resolves with the todo item if found, or undefined if not found.
+   */
+  async getTodo(todoId: number): Promise<Todo | undefined> {
+    await this.db.read();
+    const todo = this.db.data.todos.find((todo) => todo.id === todoId);
+    return todo;
   }
 }

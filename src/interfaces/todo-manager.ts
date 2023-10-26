@@ -34,4 +34,18 @@ export interface TodoMangerInterface {
    * @returns  A Promise that resolves with the todo item if found, or undefined if not found.
    */
   getTodo: (todoId: number) => Promise<Todo | undefined>;
+  /**
+   * Update a todo item in the database with the specified ID.
+   * @param {number} todoId - The ID of the todo item to update.
+   * @param {Todo} todo - The updated todo item with new values.
+   * @returns A promise that resolves with the updated todo item ,if the update is successfu  or null if the specified ID is not found.
+   */
+  updateTodo: (todoId: number, todo: Todo) => Promise<Todo>;
+  /**
+   * Checks if a todo with the specified ID exists in the database.
+   * @param todoId - The ID of the todo to check for existence.
+   * @returns  A Promise that resolves to a boolean indicating whether the todo with the given ID exists.
+   *
+   */
+  idExist: (todoId: number) => Promise<boolean>;
 }

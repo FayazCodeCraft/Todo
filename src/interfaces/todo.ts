@@ -22,4 +22,12 @@ export interface TodoInterface {
    * To check whether task completed or not
    */
   completed: boolean;
+  /**
+   * The date and time when the Todo was created.
+   */
+  createdAt: Date;
+  /**
+   * The date and time when the Todo last updated.
+   */
+  updatedAt: Date;
 }

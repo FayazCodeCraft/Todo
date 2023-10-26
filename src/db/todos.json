@@ -2,138 +2,48 @@
   "todos": [
     {
       "id": 1,
-      "title": "Pay Bills",
-      "description": "Settle the utility and credit card bills",
-      "dueDate": "2023-12-10",
-      "created_At": "2023-10-23T03:38:03.620Z",
-      "updated_At": "2023-10-23T03:38:03.620Z",
+      "title": "Complete Assignment",
+      "description": "Finish the report by 5 PM",
+      "dueDate": "2023-10-31",
+      "createdAt": "2023-10-26T10:30:20.088Z",
+      "updatedAt": "2023-10-26T12:00:30.487Z",
       "completed": false
     },
     {
       "id": 2,
-      "title": "Prepare for Meeting",
-      "description": "Gather presentation materials for the team meeting",
-      "dueDate": "2023-12-25",
-      "created_At": "2023-10-23T03:38:27.043Z",
-      "updated_At": "2023-10-23T03:38:27.043Z",
+      "title": "Exercise",
+      "description": "Complete a 30-minute cardio workout",
+      "dueDate": "2023-12-26",
+      "createdAt": "2023-10-26T10:39:01.632Z",
+      "updatedAt": "2023-10-26T11:01:44.199Z",
       "completed": false
     },
     {
       "id": 3,
-      "title": "Math Homework",
-      "description": "Solve exercises 1-5 on page 43",
-      "dueDate": "2023-12-29",
-      "created_At": "2023-10-23T03:38:48.276Z",
-      "updated_At": "2023-10-23T03:38:48.276Z",
+      "title": "Prepare for Meeting",
+      "description": "Gather presentation materials for the team meeting",
+      "dueDate": "2023-12-25",
+      "createdAt": "2023-10-26T10:54:48.311Z",
+      "updatedAt": "2023-10-26T10:54:48.311Z",
       "completed": false
     },
     {
       "id": 4,
-      "title": "Exercise",
-      "description": "Complete a 30-minute cardio workout",
-      "dueDate": "2023-12-26",
-      "created_At": "2023-10-23T03:39:06.480Z",
-      "updated_At": "2023-10-23T03:39:06.480Z",
+      "title": "Math Homework",
+      "description": "Solve exercises 1-5 on page 43",
+      "dueDate": "2023-12-29",
+      "createdAt": "2023-10-26T10:55:06.876Z",
+      "updatedAt": "2023-10-26T10:55:06.876Z",
       "completed": false
     },
     {
       "id": 5,
-      "title": "Read a Book",
-      "description": "Read the first five chapters of 'The Great Gatsby'",
-      "dueDate": "2023-11-15",
-      "created_At": "2023-10-25T03:54:38.856Z",
-      "updated_At": "2023-10-25T03:54:38.856Z",
+      "title": "Math Homework",
+      "description": "Solve exercises 1-5 on page 43",
+      "dueDate": "2023-12-29",
+      "createdAt": "2023-10-26T11:18:59.144Z",
+      "updatedAt": "2023-10-26T11:18:59.144Z",
       "completed": false
-    },
-    {
-      "id": 6,
-      "title": "Read a Book",
-      "description": "Read the first ten chapters of 'The Great Gatsby'",
-      "dueDate": "2023-11-20",
-      "created_At": "2023-10-25T04:01:47.953Z",
-      "updated_At": "2023-10-25T04:01:47.953Z",
-      "completed": false
-    },
-    {
-      "id": 7,
-      "title": "Complete Homework",
-      "description": "Finish the math and history assignments",
-      "dueDate": "2023-11-05",
-      "created_At": "2023-10-25T04:20:58.379Z",
-      "updated_At": "2023-10-25T04:20:58.379Z",
-      "completed": false
-    },
-    {
-      "id": 8,
-      "title": "Study for Exam",
-      "description": "Review the study material for the upcoming exam",
-      "dueDate": "2023-11-10",
-      "created_At": "2023-10-25T10:15:45.123Z",
-      "updated_At": "2023-10-25T10:15:45.123Z",
-      "completed": true
-    },
-    {
-      "id": 9,
-      "title": "Write Report",
-      "description": "Prepare a detailed report for the project",
-      "dueDate": "2023-11-15",
-      "created_At": "2023-10-25T12:30:20.456Z",
-      "updated_At": "2023-10-25T12:30:20.456Z",
-      "completed": true
-    },
-    {
-      "id": 10,
-      "title": "Exercise",
-      "description": "Go for a run or hit the gym",
-      "dueDate": "2023-11-12",
-      "created_At": "2023-10-25T14:45:30.789Z",
-      "updated_At": "2023-10-25T14:45:30.789Z",
-      "completed": true
-    },
-    {
-      "id": 11,
-      "title": "Read a Book",
-      "description": "Spend some time reading a good book",
-      "dueDate": "2023-11-08",
-      "created_At": "2023-10-25T16:55:15.267Z",
-      "updated_At": "2023-10-25T16:55:15.267Z",
-      "completed": true
-    },
-    {
-      "id": 12,
-      "title": "Grocery Shopping",
-      "description": "Buy groceries for the week",
-      "dueDate": "2023-11-10",
-      "created_At": "2023-10-25T18:20:40.521Z",
-      "updated_At": "2023-10-25T18:20:40.521Z",
-      "completed": false
-    },
-    {
-      "id": 13,
-      "title": "Call Mom",
-      "description": "Catch up with your mother",
-      "dueDate": "2023-11-13",
-      "created_At": "2023-10-25T20:10:55.892Z",
-      "updated_At": "2023-10-25T20:10:55.892Z",
-      "completed": true
-    },
-    {
-      "id": 14,
-      "title": "Plan Vacation",
-      "description": "Start planning your next vacation",
-      "dueDate": "2023-11-14",
-      "created_At": "2023-10-25T22:40:05.333Z",
-      "updated_At": "2023-10-25T22:40:05.333Z",
-      "completed": false
-    },
-    {
-      "id": 15,
-      "title": "Cook Dinner",
-      "description": "Prepare a delicious dinner",
-      "dueDate": "2023-11-09",
-      "created_At": "2023-10-25T23:55:00.987Z",
-      "updated_At": "2023-10-25T23:55:00.987Z",
-      "completed": true
-    }  
+    }
   ]
 }

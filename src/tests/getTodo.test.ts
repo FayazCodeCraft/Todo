@@ -22,8 +22,8 @@ describe("GET /api/v1/todo/:todoId", () => {
       title: "Pay Bills",
       description: "Settle the utility and credit card bills",
       dueDate: "2023-12-10",
-      created_At: "2023-10-23T03:38:03.620Z",
-      updated_At: "2023-10-23T03:38:03.620Z",
+      createdAt: "2023-10-23T03:38:03.620Z",
+      updatedAt: "2023-10-23T03:38:03.620Z",
       completed: false,
     });
   });
@@ -39,8 +39,8 @@ describe("GET /api/v1/todo/:todoId", () => {
       title: "Prepare for Meeting",
       description: "Gather presentation materials for the team meeting",
       dueDate: "2023-12-25",
-      created_At: "2023-10-23T03:38:27.043Z",
-      updated_At: "2023-10-23T03:38:27.043Z",
+      createdAt: "2023-10-23T03:38:27.043Z",
+      updatedAt: "2023-10-23T03:38:27.043Z",
       completed: false,
     });
   });
@@ -56,8 +56,8 @@ describe("GET /api/v1/todo/:todoId", () => {
       title: "Cook Dinner",
       description: "Prepare a delicious dinner",
       dueDate: "2023-11-09",
-      created_At: "2023-10-25T23:55:00.987Z",
-      updated_At: "2023-10-25T23:55:00.987Z",
+      createdAt: "2023-10-25T23:55:00.987Z",
+      updatedAt: "2023-10-25T23:55:00.987Z",
       completed: true,
     });
   });

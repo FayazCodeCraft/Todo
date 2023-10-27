@@ -42,7 +42,8 @@ describe("Test: todoSchema", () => {
   test("should reject a todo object with a title that is longer than 50 characters", () => {
     const todo = {
       id: 1,
-      title: "Exploring New Horizons: A World of Wonders, is a concise and intriguing statement. It suggests embarking on an exciting journey or adventure to discover new and fascinating aspects of the world. This phrase conveys a sense of curiosity and the idea that the world is full of amazing and unknown things waiting to be explored. It's a call to action or an invitation to step into the unknown and experience the wonders that the world has to offer",
+      title:
+        "Exploring New Horizons: A World of Wonders, is a concise and intriguing statement. It suggests embarking on an exciting journey or adventure to discover new and fascinating aspects of the world. This phrase conveys a sense of curiosity and the idea that the world is full of amazing and unknown things waiting to be explored. It's a call to action or an invitation to step into the unknown and experience the wonders that the world has to offer",
       description: "Write a blog post about Zod",
       dueDate: "2023-10-21",
     };
@@ -87,8 +88,8 @@ describe("Test: todoSchema", () => {
 
     const parsedTodo = todoSchema.parse(todo);
 
-    expect(parsedTodo.created_At).toBeInstanceOf(Date);
-    expect(parsedTodo.updated_At).toBeInstanceOf(Date);
+    expect(parsedTodo.createdAt).toBeInstanceOf(Date);
+    expect(parsedTodo.updatedAt).toBeInstanceOf(Date);
   });
 
   test("should reject a todo object with a created_At property that is not a Date object", () => {
@@ -97,7 +98,7 @@ describe("Test: todoSchema", () => {
       title: "Write a blog post",
       description: "Write a blog post about Zod",
       dueDate: "2023-10-21",
-      created_At: "invalid_date",
+      createdAt: "invalid_date",
     };
 
     expect(() => todoSchema.parse(todo)).toThrowError(
@@ -111,8 +112,8 @@ describe("Test: todoSchema", () => {
       title: "Write a blog post",
       description: "Write a blog post about Zod",
       dueDate: "2023-10-21",
-      created_At: new Date("2023-10-20"),
-      updated_At: "invalid_date",
+      createdAt: new Date("2023-10-20"),
+      updatedAt: "invalid_date",
     };
 
     expect(() => todoSchema.parse(todo)).toThrowError(

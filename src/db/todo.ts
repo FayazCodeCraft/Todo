@@ -94,4 +94,37 @@ export class TodoManager implements TodoMangerInterface {
     const todo = this.db.data.todos.find((todo) => todo.id === todoId);
     return todo;
   }
+
+  /**
+   * Checks if a todo with the specified ID exists in the database.
+   * @param todoId - The ID of the todo to check for existence.
+   * @returns  A Promise that resolves to a boolean indicating whether the todo with the given ID exists.
+   *
+   */
+  async idExist(todoId: number): Promise<boolean> {
+    await this.db.read();
+    const todo = this.db.data.todos.find((todo) => todo.id === todoId);
+    return !!todo;
+  }
+
+  /**
+   * Update a todo item in the database with the specified ID.
+   * @param {number} todoId - The ID of the todo item to update.
+   * @param {Todo} todo - The updated todo item with new values.
+   * @returns A promise that resolves with the updated todo item ,if the update is successfu  or null if the specified ID is not found.
+   */
+  async updateTodo(todoId: number, todo: Todo): Promise<Todo> {
+    await this.db.read();
+    const todoToUpdate = this.db.data.todos.find(
+      (dbTodo) => dbTodo.id === todoId,
+    ) as Todo;
+
+    todoToUpdate.title = todo.title;
+    todoToUpdate.description = todo.description;
+    todoToUpdate.dueDate = todo.dueDate;
+    todoToUpdate.completed = todo.completed;
+    todoToUpdate.updatedAt = todo.updatedAt;
+    await this.db.write();
+    return todoToUpdate;
+  }
 }

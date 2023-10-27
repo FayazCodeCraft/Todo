@@ -9,7 +9,7 @@ const todoSchema = (() => {
       .refine((value) => value >= 1, {
         message: "ID must be a positive integer",
       })
-      .default(()=>1),
+      .default(() => 1),
     // 'title' field: Validate the length of the title.
     title: zod
       .string()
@@ -32,8 +32,8 @@ const todoSchema = (() => {
       }),
 
     // 'created_At' and 'updated_At' fields: Set default date values.
-    created_At: zod.date().default(() => new Date()),
-    updated_At: zod.date().default(() => new Date()),
+    createdAt: zod.date().default(() => new Date()),
+    updatedAt: zod.date().default(() => new Date()),
 
     completed: zod.boolean().default(() => false),
   });

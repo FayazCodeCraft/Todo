@@ -74,3 +74,26 @@ export const getTodo = asyncWrapper(
     res.status(200).json(todo);
   },
 );
+
+/**
+ * Update a todo item for the specified ID.
+ * @param {Request} req - The Express request object.
+ * @param {Response} res - The Express response object.
+ * @param {NextFunction} next - The Express next function.
+ * @returns {Promise<void>}  A promise that resolves when the update is complete. If the specified ID is not found, a 404 error is thrown.
+ */
+
+export const updateTodo = asyncWrapper(
+  async (req: Request, res: Response, nex: NextFunction): Promise<void> => {
+    const id = parseInt(req.params.todoId);
+    const todoManager = TodoManager.getInstance();
+    const idExist = await todoManager.idExist(id);
+    if (idExist) {
+      const todo = await todoManager.validateTodo(req.body);
+      const updatedTodo = await todoManager.updateTodo(id, todo);
+      res.status(200).json(updatedTodo);
+    } else {
+      throw createCustomError(`Id: ${id} Not Found`, 404);
+    }
+  },
+);

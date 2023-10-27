@@ -97,3 +97,24 @@ export const updateTodo = asyncWrapper(
     }
   },
 );
+
+/**
+ * Delete a todo item for the specified ID.
+ * @param {Request} req - The Express request object.
+ * @param {Response} res - The Express response object.
+ * @param {NextFunction} next - The Express next function.
+ * @returns {Promise<void>}  A promise that resolves when the delete is complete. If the specified ID is not found, a 404 error is thrown.
+ */
+export const deleteTodo = asyncWrapper(
+  async (req: Request, res: Response, nex: NextFunction): Promise<void> => {
+    const id = parseInt(req.params.todoId);
+    const todoManager = TodoManager.getInstance();
+    const idExist = await todoManager.idExist(id);
+    if (idExist) {
+      await todoManager.deleteTodo(id);
+      res.status(200).json({ message: `Todo with ${id} deleted successfully` });
+    } else {
+      throw createCustomError(`Id: ${id} Not Found`, 404);
+    }
+  },
+);

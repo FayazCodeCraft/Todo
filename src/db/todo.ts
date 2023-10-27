@@ -127,4 +127,18 @@ export class TodoManager implements TodoMangerInterface {
     await this.db.write();
     return todoToUpdate;
   }
+
+  /**
+   * Delete a todo item from the database.
+   * @param todoId - The ID of the todo item to be deleted.
+   * @returns  A Promise that resolves when the deletion is completed.
+   */
+  async deleteTodo(todoId: number): Promise<void> {
+    await this.db.read();
+    const indexTodelete = this.db.data.todos.findIndex(
+      (todo) => todo.id === todoId,
+    );
+    this.db.data.todos.splice(indexTodelete, 1);
+    await this.db.write();
+  }
 }

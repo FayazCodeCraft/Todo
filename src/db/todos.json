@@ -1,15 +1,6 @@
 {
   "todos": [
     {
-      "id": 1,
-      "title": "Complete Assignment",
-      "description": "Finish the report by 5 PM",
-      "dueDate": "2023-10-31",
-      "createdAt": "2023-10-26T10:30:20.088Z",
-      "updatedAt": "2023-10-26T12:00:30.487Z",
-      "completed": false
-    },
-    {
       "id": 2,
       "title": "Exercise",
       "description": "Complete a 30-minute cardio workout",

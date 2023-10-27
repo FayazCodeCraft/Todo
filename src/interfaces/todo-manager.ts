@@ -48,4 +48,10 @@ export interface TodoMangerInterface {
    *
    */
   idExist: (todoId: number) => Promise<boolean>;
+  /**
+   * Delete a todo item from the database.
+   * @param todoId - The ID of the todo item to be deleted.
+   * @returns  A Promise that resolves when the deletion is completed.
+   */
+  deleteTodo: (todoId: number) => Promise<void>;
 }

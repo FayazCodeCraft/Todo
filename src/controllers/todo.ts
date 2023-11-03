@@ -19,11 +19,12 @@ export const createTodo = asyncWrapper(
     if (newTodo.id === 1) {
       newTodo.id = await generateUniqueId();
     }
-    const success = await todoManager.createTodo(newTodo);
-    if (success) {
-      res.status(201).json(newTodo);
+    const idExist = await todoManager.idExist(newTodo.id);
+    if (!idExist) {
+      const todo = await todoManager.createTodo(newTodo);
+      res.status(201).json(todo);
     } else {
-      res.status(400).json({ error: `ID: ${newTodo.id} already exists` });
+      throw createCustomError(`Id: ${newTodo.id} already exists`, 400);
     }
   },
 );
@@ -67,11 +68,13 @@ export const getTodo = asyncWrapper(
   async (req: Request, res: Response, nex: NextFunction): Promise<void> => {
     const id = parseInt(req.params.todoId);
     const todoManager = TodoManager.getInstance();
-    const todo = await todoManager.getTodo(id);
-    if (!todo) {
+    const idExist = await todoManager.idExist(id);
+    if (idExist) {
+      const todo = await todoManager.getTodo(id);
+      res.status(200).json(todo);
+    } else {
       throw createCustomError(`Id: ${id} Not Found`, 404);
     }
-    res.status(200).json(todo);
   },
 );
 

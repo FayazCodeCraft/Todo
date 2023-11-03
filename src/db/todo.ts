@@ -57,18 +57,11 @@ export class TodoManager implements TodoMangerInterface {
    * @param {Todo} newTodo - The new todo item to be created.
    * @returns A promise that resolves to true if the todo was created successfully or false if the ID already exists.
    */
-  async createTodo(newTodo: Todo): Promise<boolean> {
+  async createTodo(newTodo: Todo): Promise<Todo> {
     await this.db.read();
-    const idExist = this.db.data.todos.find(
-      (dbTodo) => dbTodo.id === newTodo.id,
-    );
-    if (idExist === undefined) {
-      this.db.data.todos.push({ ...newTodo });
-      await this.db.write();
-      return true;
-    } else {
-      return false;
-    }
+    this.db.data.todos.push({ ...newTodo });
+    await this.db.write();
+    return newTodo;
   }
 
   /**
@@ -89,9 +82,9 @@ export class TodoManager implements TodoMangerInterface {
    * @param todoId - The unique identifier of the todo item to retrieve.
    * @returns  A Promise that resolves with the todo item if found, or undefined if not found.
    */
-  async getTodo(todoId: number): Promise<Todo | undefined> {
+  async getTodo(todoId: number): Promise<Todo> {
     await this.db.read();
-    const todo = this.db.data.todos.find((todo) => todo.id === todoId);
+    const todo = this.db.data.todos.find((todo) => todo.id === todoId) as Todo;
     return todo;
   }
 

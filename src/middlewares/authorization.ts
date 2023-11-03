@@ -1,4 +1,6 @@
 import { type Request, type Response, type NextFunction } from "express";
+import dotenv from "dotenv";
+dotenv.config();
 
 /**
  * Middleware to check API key in the "Authorization" header.
@@ -13,7 +15,7 @@ export const apiKeyMiddleware = (
   next: NextFunction,
 ): void => {
   const apiKey = req.get("Authorization");
-  if (apiKey !== "Bearer abc123xyz456") {
+  if (apiKey !== process.env.API_KEY) {
     res.status(401).json({ message: "Unauthorized" });
   } else {
     next();

@@ -5,9 +5,10 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "test": "vitest",
+    "test": "set NODE_ENV=development&&vitest",
     "start": "node dist/app.js",
-    "dev": "concurrently \"tsc -w\" \"nodemon dist/app.js\"",
+    "dev": "set NODE_ENV=development&&concurrently \"tsc -w\" \"nodemon dist/app.js\"",
+    "prod": "set NODE_ENV=production&&concurrently \"tsc -w\" \"nodemon dist/app.js\"",
     "lint": "eslint --ignore-path .gitignore --fix src/**/*.ts",
     "format": "prettier --ignore-path .gitignore --write src/**/*.ts",
     "prepare": "husky install"
@@ -16,6 +17,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "config": "^3.3.9",
+    "dotenv": "^16.3.1",
     "express": "^4.17.1",
     "lowdb": "^6.1.0",
     "zod": "^3.22.4"
@@ -23,6 +26,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.8.0",
     "@commitlint/config-conventional": "^17.8.0",
+    "@types/config": "^3.3.2",
     "@types/express": "^4.17.19",
     "@types/node": "^20.8.6",
     "@types/supertest": "^2.0.15",

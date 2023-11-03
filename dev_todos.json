@@ -1,0 +1,49 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Complete Assignment 1",
+      "description": "Finish the report by 5 PM on Monday",
+      "dueDate": "2023-11-06",
+      "createdAt": "2023-11-03T06:31:30.489Z",
+      "updatedAt": "2023-11-03T06:31:30.489Z",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "title": "Submit Project Proposal",
+      "description": "Submit the project proposal before the end of the week",
+      "dueDate": "2023-11-05",
+      "createdAt": "2023-11-03T06:31:45.568Z",
+      "updatedAt": "2023-11-03T06:31:45.568Z",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "title": "Study for Exam",
+      "description": "Prepare for the upcoming math exam",
+      "dueDate": "2023-11-10",
+      "createdAt": "2023-11-03T06:32:04.451Z",
+      "updatedAt": "2023-11-03T06:32:04.452Z",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "title": "Buy Groceries",
+      "description": "Purchase groceries for the week",
+      "dueDate": "2023-11-08",
+      "createdAt": "2023-11-03T06:32:23.911Z",
+      "updatedAt": "2023-11-03T06:32:23.912Z",
+      "completed": false
+    },
+    {
+      "id": 5,
+      "title": "Call Grandma",
+      "description": "Give Grandma a call and catch up with her",
+      "dueDate": "2023-11-12",
+      "createdAt": "2023-11-03T06:32:37.601Z",
+      "updatedAt": "2023-11-03T06:32:37.602Z",
+      "completed": false
+    }
+  ]
+}

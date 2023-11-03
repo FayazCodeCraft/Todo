@@ -20,7 +20,7 @@ export interface TodoMangerInterface {
    * @param newTodo - The new Todo object to create.
    * @returns A Promise that resolves when the Todo is created.
    */
-  createTodo: (newTodo: Todo) => Promise<boolean>;
+  createTodo: (newTodo: Todo) => Promise<Todo>;
   /**
    * Retrieve a subset of todos from the database.
    * @param startIndex - The start index for selecting todos.
@@ -33,7 +33,7 @@ export interface TodoMangerInterface {
    * @param todoId - The unique identifier of the todo item to retrieve.
    * @returns  A Promise that resolves with the todo item if found, or undefined if not found.
    */
-  getTodo: (todoId: number) => Promise<Todo | undefined>;
+  getTodo: (todoId: number) => Promise<Todo>;
   /**
    * Update a todo item in the database with the specified ID.
    * @param {number} todoId - The ID of the todo item to update.

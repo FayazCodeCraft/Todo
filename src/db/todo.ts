@@ -4,6 +4,15 @@ import { type TodoInterface as Todo } from "../interfaces/todo.js";
 import { type TodoDataBaseData as Todos } from "../interfaces/todo-db.js";
 import todoSchema from "../validators/todo.js";
 import { type TodoMangerInterface } from "../interfaces/todo-manager.js";
+import config from "config";
+import dotenv from "dotenv";
+dotenv.config();
+
+/**
+ * Determine the database name based on the current environment using configuration settings.
+ * This allows the code to dynamically select the database based on the environment.
+ */
+const dbName: string = config.get(`${process.env.NODE_ENV}.dbName`);
 
 /**
  * Class representing a TodoManager for managing todo items.
@@ -13,11 +22,19 @@ export class TodoManager implements TodoMangerInterface {
   private readonly db: Low<Todos>;
 
   /**
-   * Private constructor to create a new instance of TodoManager.
+   * Private constructor for initializing a database instance.
    */
   private constructor() {
-    const adapter = new JSONFile<Todos>("src/db/todos.json");
-    this.db = new Low(adapter, { todos: [] });
+    // Check the environment,if it is production initialize production database.
+    if (process.env.NODE_ENV === "production") {
+      const adapter = new JSONFile<Todos>(dbName);
+      this.db = new Low(adapter, { todos: [] });
+    }
+    // Else ,initialize development database.
+    else {
+      const adapter = new JSONFile<Todos>(dbName);
+      this.db = new Low(adapter, { todos: [] });
+    }
   }
 
   /**

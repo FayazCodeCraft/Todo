@@ -3,6 +3,8 @@ import todos from "./routes/todos.js";
 import { notFound } from "./middlewares/not-found.js";
 import { apiKeyMiddleware } from "./middlewares/authorization.js";
 import { errorHandler } from "./middlewares/error-handler.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 

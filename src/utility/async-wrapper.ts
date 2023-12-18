@@ -1,10 +1,11 @@
-import { type Request, type Response, type NextFunction } from "express";
+import { type Response, type NextFunction } from "express";
+import { type AuthenticatedRequest } from "../middlewares/authentication.js";
 
 /**
  * A function that handles Express requests and returns a promise.
  */
 type RequestHandler = (
-  req: Request,
+  req: AuthenticatedRequest,
   res: Response,
   next: NextFunction,
 ) => Promise<void>;
@@ -15,7 +16,11 @@ type RequestHandler = (
  * @returns A new request handler function that handles errors.
  */
 export const asyncWrapper = (func: RequestHandler): RequestHandler => {
-  return async (req: Request, res: Response, next: NextFunction) => {
+  return async (
+    req: AuthenticatedRequest,
+    res: Response,
+    next: NextFunction,
+  ) => {
     try {
       await func(req, res, next);
     } catch (error) {

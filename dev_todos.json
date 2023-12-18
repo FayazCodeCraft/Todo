@@ -1,49 +1,216 @@
 {
-  "todos": [
+  "users": [
     {
-      "id": 1,
-      "title": "Complete Assignment 1",
-      "description": "Finish the report by 5 PM on Monday",
-      "dueDate": "2023-11-06",
-      "createdAt": "2023-11-03T06:31:30.489Z",
-      "updatedAt": "2023-11-03T06:31:30.489Z",
-      "completed": false
+      "userId": "1c54d72e-6077-406a-bab2-e05dd18beb49",
+      "userName": "demo",
+      "userEmail": "demo@gmail.com",
+      "userPassword": "$2b$10$j8ElXOIVXLajPfiYS568YOlqbcRv8KlhM4aqTbMXB9CV6ZHacED0e",
+      "todos": [
+        {
+          "id": 1,
+          "title": "Exercise 2",
+          "description": "Complete a 30-minute cardio workout",
+          "dueDate": "2023-12-26",
+          "createdAt": "2023-12-18T13:51:44.080Z",
+          "updatedAt": "2023-12-18T17:36:53.616Z",
+          "completed": true
+        },
+        {
+          "id": 2,
+          "title": "Homework",
+          "description": "Complete Homework",
+          "dueDate": "2023-12-26",
+          "createdAt": "2023-12-18T17:36:43.826Z",
+          "updatedAt": "2023-12-18T17:52:09.460Z",
+          "completed": true
+        }
+      ],
+      "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIxYzU0ZDcyZS02MDc3LTQwNmEtYmFiMi1lMDVkZDE4YmViNDkiLCJpYXQiOjE3MDI5MjE5NjAsImV4cCI6MTcwNTUxMzk2MH0.PJzSW7lsBTdcPzIJChcHhLiS6IcyQKblBLWyoXBCK2M"
     },
     {
-      "id": 2,
-      "title": "Submit Project Proposal",
-      "description": "Submit the project proposal before the end of the week",
-      "dueDate": "2023-11-05",
-      "createdAt": "2023-11-03T06:31:45.568Z",
-      "updatedAt": "2023-11-03T06:31:45.568Z",
-      "completed": false
+      "userId": "999cddda-1376-4bdb-a206-b0f20cfa9298",
+      "userName": "demo2",
+      "userEmail": "demo2@gmail.com",
+      "userPassword": "$2b$10$UiOsccyArxX/7JLl0zWmCejuV.X7kGM6wlV6kXaRCwlG7pEE4sh22",
+      "todos": [
+        {
+          "id": 1,
+          "title": "Homework",
+          "description": "Complete science Homework",
+          "dueDate": "2023-12-26",
+          "createdAt": "2023-12-18T17:57:58.289Z",
+          "updatedAt": "2023-12-18T17:58:32.047Z",
+          "completed": true
+        }
+      ],
+      "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI5OTljZGRkYS0xMzc2LTRiZGItYTIwNi1iMGYyMGNmYTkyOTgiLCJpYXQiOjE3MDI5MjIyNjIsImV4cCI6MTcwNTUxNDI2Mn0.-DjVU_rTD1o6pofOEotHWmksxAo1LkRDhgU_YUUp-NU"
     },
     {
-      "id": 3,
-      "title": "Study for Exam",
-      "description": "Prepare for the upcoming math exam",
-      "dueDate": "2023-11-10",
-      "createdAt": "2023-11-03T06:32:04.451Z",
-      "updatedAt": "2023-11-03T06:32:04.452Z",
-      "completed": false
+      "userId": "4add3ee3-56ea-4c00-84fb-399c1a26291c",
+      "userName": "demo3",
+      "userEmail": "demo3@gmail.com",
+      "userPassword": "$2b$10$sHPAIPvquVtZs2Yl3VcqJOs9KuCbu4O/G6wOMOPxGhqaTP0T8ynPe",
+      "todos": [],
+      "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI0YWRkM2VlMy01NmVhLTRjMDAtODRmYi0zOTljMWEyNjI5MWMiLCJpYXQiOjE3MDI5MDc3OTIsImV4cCI6MTcwNTQ5OTc5Mn0.89ID6FrRlfvS6rOVftFiXVpSxA4Rr585oqxEJJMz6ys"
     },
     {
-      "id": 4,
-      "title": "Buy Groceries",
-      "description": "Purchase groceries for the week",
-      "dueDate": "2023-11-08",
-      "createdAt": "2023-11-03T06:32:23.911Z",
-      "updatedAt": "2023-11-03T06:32:23.912Z",
-      "completed": false
+      "userId": "1b2f3170-233a-4dfc-9788-567f6bade94c",
+      "userName": "demo4",
+      "userEmail": "demo4@gmail.com",
+      "userPassword": "$2b$10$1gJjrx9ovsB3VWf.KFonHOZjx6/JUAQkIXC7Kje49nMXfvpzqWHqy",
+      "todos": [],
+      "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIxYjJmMzE3MC0yMzNhLTRkZmMtOTc4OC01NjdmNmJhZGU5NGMiLCJpYXQiOjE3MDI5MDc5NzEsImV4cCI6MTcwNTQ5OTk3MX0.xQsS5vtCwK29PMOfEcbbxAQRtV1y4MrAmwiLDFcIJUA"
     },
     {
-      "id": 5,
-      "title": "Call Grandma",
-      "description": "Give Grandma a call and catch up with her",
-      "dueDate": "2023-11-12",
-      "createdAt": "2023-11-03T06:32:37.601Z",
-      "updatedAt": "2023-11-03T06:32:37.602Z",
-      "completed": false
+      "userId": "7b343bdf-fb5e-449b-9560-f72cf0ab32d2",
+      "userName": "demo5",
+      "userEmail": "demo5@gmail.com",
+      "userPassword": "$2b$10$KT5Wq8aXXV3ZjjNqqrK2w.SmpY8tsVkAE2hrm0LSn90w1.6QLnD5G",
+      "todos": [
+        {
+          "id": 2,
+          "title": "homework",
+          "description": "Complete By Today",
+          "dueDate": "2024-10-10",
+          "createdAt": "2023-12-18T14:42:15.056Z",
+          "updatedAt": "2023-12-18T14:42:15.057Z",
+          "completed": false
+        }
+      ],
+      "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI3YjM0M2JkZi1mYjVlLTQ0OWItOTU2MC1mNzJjZjBhYjMyZDIiLCJpYXQiOjE3MDI5MTA1MDIsImV4cCI6MTcwNTUwMjUwMn0.vBa-rzjXNVE6Bp4Ctnx7e1ypjSbCTnq9JVlREimn_tg"
+    },
+    {
+      "userId": "87369beb-7678-4b5a-ab31-50676adf2d79",
+      "userName": "demo5",
+      "userEmail": "demo7@gmai.com",
+      "userPassword": "$2b$10$7tVVgvateIIGB/7K/qsVye44mFM8C8Dt5lPJ6TJ9dm2bQ/B2UOlse",
+      "todos": [],
+      "refreshToken": ""
+    },
+    {
+      "userId": "5f013e62-dbf1-4120-9b41-d4284766616c",
+      "userName": "demo5",
+      "userEmail": "demo8@gmai.com",
+      "userPassword": "$2b$10$kM47AHIvduSm./92396Kk.afuEjPdpC6sKgsFwokjxBQ1OPz79Ueu",
+      "todos": [
+        {
+          "id": 1,
+          "title": "homework",
+          "description": "Complete By Tommorrow",
+          "dueDate": "2024-10-10",
+          "createdAt": "2023-12-18T15:11:02.577Z",
+          "updatedAt": "2023-12-18T15:11:02.577Z",
+          "completed": false
+        }
+      ],
+      "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1ZjAxM2U2Mi1kYmYxLTQxMjAtOWI0MS1kNDI4NDc2NjYxNmMiLCJpYXQiOjE3MDI5MTI1ODIsImV4cCI6MTcwNTUwNDU4Mn0.8VILdbwbR0vJvf_fAKaK02PLoVr4_7En74zNs7OWwow"
+    },
+    {
+      "userId": "d3b788a9-9a3a-48a8-9db1-9edd13881db6",
+      "userName": "abcde",
+      "userEmail": "abc@gmail.com",
+      "userPassword": "$2b$10$d0AyI3ImNAQUUTDVRNzROOURguqfly/LVK6Hz1.JaEnmQvr0/HivK",
+      "todos": [],
+      "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJkM2I3ODhhOS05YTNhLTQ4YTgtOWRiMS05ZWRkMTM4ODFkYjYiLCJpYXQiOjE3MDI5MjA5NTIsImV4cCI6MTcwNTUxMjk1Mn0.Lxefkq_2w3wUOdDKsWxJECc0AeyIgzo-NyO-GGcw_8g"
+    },
+    {
+      "userId": "fc0e9714-b230-4883-af8e-6890fa3a352a",
+      "userName": "John",
+      "userEmail": "Fayaz100@gmail.com",
+      "userPassword": "$2b$10$LXHRt9..mCEKzkUbjLptFOyZqQtu9ozKpM60HJWqAvX5VFM1cnWQW",
+      "todos": [
+        {
+          "id": 1,
+          "title": "Exercise 2",
+          "description": "Complete a 30-minute cardio workout",
+          "dueDate": "2023-12-31",
+          "createdAt": "2023-12-18T13:51:44.080Z",
+          "updatedAt": "2023-12-27T16:01:29.937Z",
+          "completed": false
+        },
+        {
+          "id": 2,
+          "title": "Homework",
+          "description": "Complete Homework",
+          "dueDate": "2023-12-26",
+          "createdAt": "2023-12-18T17:36:43.826Z",
+          "updatedAt": "2023-12-18T17:52:09.460Z",
+          "completed": true
+        },
+        {
+          "id": 3,
+          "title": "Read Book",
+          "description": "Finish the novel for book club",
+          "dueDate": "2023-12-30",
+          "createdAt": "2023-12-20T09:15:22.512Z",
+          "updatedAt": "2023-12-25T18:45:11.223Z",
+          "completed": false
+        },
+        {
+          "id": 4,
+          "title": "Grocery Shopping",
+          "description": "Buy fruits, vegetables, and milk",
+          "dueDate": "2023-12-29",
+          "createdAt": "2023-12-21T14:30:10.745Z",
+          "updatedAt": "2023-12-28T12:10:57.631Z",
+          "completed": false
+        },
+        {
+          "id": 5,
+          "title": "Project Presentation",
+          "description": "Prepare slides for the team presentation",
+          "dueDate": "2023-12-28",
+          "createdAt": "2023-12-22T11:45:36.921Z",
+          "updatedAt": "2023-12-27T20:20:15.008Z",
+          "completed": true
+        },
+        {
+          "id": 6,
+          "title": "Write Blog Post",
+          "description": "Create a blog post on a technical topic",
+          "dueDate": "2023-12-30",
+          "createdAt": "2023-12-23T08:55:19.633Z",
+          "updatedAt": "2023-12-29T14:05:44.112Z",
+          "completed": false
+        },
+        {
+          "id": 7,
+          "title": "Birthday Gift",
+          "description": "Buy a gift for a friend's birthday",
+          "dueDate": "2023-12-25",
+          "createdAt": "2023-12-24T16:20:50.929Z",
+          "updatedAt": "2023-12-25T10:35:55.716Z",
+          "completed": true
+        },
+        {
+          "id": 8,
+          "title": "Coding Challenge",
+          "description": "Complete coding challenge on LeetCode",
+          "dueDate": "2023-12-27",
+          "createdAt": "2023-12-26T12:40:33.171Z",
+          "updatedAt": "2023-12-27T08:15:19.521Z",
+          "completed": false
+        },
+        {
+          "id": 9,
+          "title": "Movie Night",
+          "description": "Plan a movie night with friends",
+          "dueDate": "2023-12-29",
+          "createdAt": "2023-12-27T19:05:14.488Z",
+          "updatedAt": "2023-12-28T09:30:29.812Z",
+          "completed": true
+        },
+        {
+          "id": 10,
+          "title": "Learn New Recipe",
+          "description": "Try cooking a new recipe for dinner",
+          "dueDate": "2023-12-28",
+          "createdAt": "2023-12-28T14:55:01.920Z",
+          "updatedAt": "2023-12-29T11:20:08.635Z",
+          "completed": false
+        }
+      ],
+      "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJmYzBlOTcxNC1iMjMwLTQ4ODMtYWY4ZS02ODkwZmEzYTM1MmEiLCJpYXQiOjE3MDQxNjk1MjUsImV4cCI6MTcwNjc2MTUyNX0.15hoDnOwZc1PM4q2nAYo-y_bNieJeh8dpIlDZuAfBDk"
     }
   ]
 }

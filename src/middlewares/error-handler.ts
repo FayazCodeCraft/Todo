@@ -17,18 +17,21 @@ export const errorHandler = (
   next: NextFunction,
 ): Response => {
   if (err instanceof zod.ZodError) {
-    const errorMessages = err.issues
-      .map((issue) => `${issue.path.join(".")}: ${issue.message}`)
-      .join(", ");
-    return res
-      .status(400)
-      .json({ message: `Validation failed => ${errorMessages}` });
+    const errorMessages: Record<string, string> = {};
+
+    err.issues.forEach((issue) => {
+      const path = issue.path.join(".");
+      errorMessages[path] = issue.message;
+    });
+
+    return res.status(400).json(errorMessages);
   }
 
   if (err instanceof CustomAPIError) {
     return res.status(err.statusCode).json({ message: err.message });
   }
+
   return res
     .status(500)
-    .json({ message: "Something Went Wrong,Please Try Again Later.....!!!!" });
+    .json({ message: "Something Went Wrong, Please Try Again Later.....!!!!" });
 };

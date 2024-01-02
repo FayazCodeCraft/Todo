@@ -1,9 +1,9 @@
-import { type NextFunction, type Request, type Response } from "express";
+import { type NextFunction, type Response } from "express";
 import { asyncWrapper } from "../utility/async-wrapper.js";
 import { TodoManager } from "../db/todo.js";
 import { generateUniqueId } from "../utility/generateUniqueId.js";
 import { createCustomError } from "../errors/custom-error.js";
-
+import { type AuthenticatedRequest } from "../middlewares/authentication.js";
 /**
  * Create a new Todo by handling a request.
  * @param {Request} req - The Express request object.
@@ -12,16 +12,21 @@ import { createCustomError } from "../errors/custom-error.js";
  * @returns {Promise<void>} A Promise that resolves when the operation is completed,If Id already exist in database error is thrown.
  */
 export const createTodo = asyncWrapper(
-  async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  async (
+    req: AuthenticatedRequest,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    const userId = req.user!.userID;
     const todoManager = TodoManager.getInstance();
     const newTodo = await todoManager.validateTodo(req.body);
     // if newTodo has default id(1) then generate uniqueID
     if (newTodo.id === 1) {
-      newTodo.id = await generateUniqueId();
+      newTodo.id = await generateUniqueId(userId);
     }
-    const idExist = await todoManager.idExist(newTodo.id);
+    const idExist = await todoManager.idExist(userId, newTodo.id);
     if (!idExist) {
-      const todo = await todoManager.createTodo(newTodo);
+      const todo = await todoManager.createTodo(userId, newTodo);
       res.status(201).json(todo);
     } else {
       throw createCustomError(`Id: ${newTodo.id} already exists`, 400);
@@ -37,12 +42,21 @@ export const createTodo = asyncWrapper(
  * @returns {Promise<void>} A Promise that resolves when the operation is completed.
  */
 export const getTodos = asyncWrapper(
-  async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  async (
+    req: AuthenticatedRequest,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    const userId = req.user!.userID;
     const requestedPage = parseInt(req.query.page as string) || 1;
     const todosPerPage = parseInt(req.query.limit as string) || 10;
     const skipCount = (requestedPage - 1) * todosPerPage;
     const todoManager = TodoManager.getInstance();
-    let todos = await todoManager.getTodos(skipCount, skipCount + todosPerPage);
+    let todos = await todoManager.getTodos(
+      userId,
+      skipCount,
+      skipCount + todosPerPage,
+    );
     if (req.query.status === "completed") {
       todos = todos.filter((todo) => todo.completed);
     }
@@ -65,12 +79,17 @@ export const getTodos = asyncWrapper(
  * @returns {Promise<void>} A Promise that resolves when the operation is completed,If the specified todo item with the given ID is not found, a custom error with a 404 status code is thrown.
  */
 export const getTodo = asyncWrapper(
-  async (req: Request, res: Response, nex: NextFunction): Promise<void> => {
+  async (
+    req: AuthenticatedRequest,
+    res: Response,
+    nex: NextFunction,
+  ): Promise<void> => {
+    const userId = req.user!.userID;
     const id = parseInt(req.params.todoId);
     const todoManager = TodoManager.getInstance();
-    const idExist = await todoManager.idExist(id);
+    const idExist = await todoManager.idExist(userId, id);
     if (idExist) {
-      const todo = await todoManager.getTodo(id);
+      const todo = await todoManager.getTodo(userId, id);
       res.status(200).json(todo);
     } else {
       throw createCustomError(`Id: ${id} Not Found`, 404);
@@ -87,13 +106,18 @@ export const getTodo = asyncWrapper(
  */
 
 export const updateTodo = asyncWrapper(
-  async (req: Request, res: Response, nex: NextFunction): Promise<void> => {
+  async (
+    req: AuthenticatedRequest,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    const userId = req.user!.userID;
     const id = parseInt(req.params.todoId);
     const todoManager = TodoManager.getInstance();
-    const idExist = await todoManager.idExist(id);
+    const idExist = await todoManager.idExist(userId, id);
     if (idExist) {
       const todo = await todoManager.validateTodo(req.body);
-      const updatedTodo = await todoManager.updateTodo(id, todo);
+      const updatedTodo = await todoManager.updateTodo(userId, id, todo);
       res.status(200).json(updatedTodo);
     } else {
       throw createCustomError(`Id: ${id} Not Found`, 404);
@@ -109,12 +133,17 @@ export const updateTodo = asyncWrapper(
  * @returns {Promise<void>}  A promise that resolves when the delete is complete. If the specified ID is not found, a 404 error is thrown.
  */
 export const deleteTodo = asyncWrapper(
-  async (req: Request, res: Response, nex: NextFunction): Promise<void> => {
+  async (
+    req: AuthenticatedRequest,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    const userId = req.user!.userID;
     const id = parseInt(req.params.todoId);
     const todoManager = TodoManager.getInstance();
-    const idExist = await todoManager.idExist(id);
+    const idExist = await todoManager.idExist(userId, id);
     if (idExist) {
-      await todoManager.deleteTodo(id);
+      await todoManager.deleteTodo(userId, id);
       res.status(200).json({ message: `Todo with ${id} deleted successfully` });
     } else {
       throw createCustomError(`Id: ${id} Not Found`, 404);

@@ -22,7 +22,7 @@ module.exports = {
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "ignorePatterns": ["vite.config.js"],
+    "ignorePatterns": ["vite.config.js","drizzle.config.ts"],
     "rules": {
         "@typescript-eslint/no-misused-promises": [
             "error",

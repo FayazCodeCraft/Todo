@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1704213934372,
+      "tag": "0000_tearful_franklin_richards",
+      "breakpoints": true
+    }
+  ]
+}

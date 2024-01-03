@@ -1,23 +1,23 @@
 import { type Request, type Response } from "express";
-import { TodoManager } from "../db/todo.js";
 import { asyncWrapper } from "../utility/async-wrapper.js";
 import { comparePassword } from "../utility/comparePassword.js";
 import { CustomAPIError, createCustomError } from "../errors/custom-error.js";
 import { generateAccessTokenAndRefreshToken } from "../utility/jwtGenerator.js";
 import { type AuthenticatedRequest } from "../middlewares/authentication.js";
 import jwt, { type Secret, type JwtPayload } from "jsonwebtoken";
+import { UserAuthenticationManager } from "../model/authenticationModel.js";
 
 /**
  * Register a new user by validating the request body, creating a new user, and returning the created user.
  */
 export const register = asyncWrapper(async (req: Request, res: Response) => {
-  const todoManager = TodoManager.getInstance();
-  const isUserExist = await todoManager.getUser(req.body.userEmail);
+  const authManager = UserAuthenticationManager.getInstance();
+  const isUserExist = await authManager.getUser(req.body.userEmail);
   if (isUserExist) {
     throw createCustomError("User Already Exist", 409);
   }
-  const validatedUser = await todoManager.validateUser(req.body);
-  const newUser = await todoManager.createUser(validatedUser);
+  const validatedUser = await authManager.validateUser(req.body);
+  const newUser = await authManager.createUser(validatedUser);
   res.status(201).json(newUser);
 });
 
@@ -26,9 +26,9 @@ export const register = asyncWrapper(async (req: Request, res: Response) => {
  */
 export const login = asyncWrapper(async (req: Request, res: Response) => {
   try {
-    const todoManager = TodoManager.getInstance();
+    const authManager = UserAuthenticationManager.getInstance();
     const { userEmail, userPassword } = req.body;
-    const user = await todoManager.getUser(userEmail);
+    const user = await authManager.getUser(userEmail);
     if (!user) {
       throw createCustomError("Invalid Credentials", 401);
     }
@@ -47,10 +47,8 @@ export const login = asyncWrapper(async (req: Request, res: Response) => {
       maxAge: 60 * 60 * 24 * 30 * 1000,
     };
     const loggedInUser = {
-      userId: user.userId,
       userName: user.userName,
       userEmail: user.userEmail,
-      todos: user.todos,
     };
     res
       .status(200)
@@ -89,8 +87,8 @@ export const refreshTokens = asyncWrapper(
     try {
       const jwtSecret = process.env.JWT_REFRESH_SECRET as Secret;
       const payload = jwt.verify(incomingRefreshToken, jwtSecret) as JwtPayload;
-      const todoManager = TodoManager.getInstance();
-      const user = await todoManager.findUserById(payload.userID);
+      const authManager = UserAuthenticationManager.getInstance();
+      const user = await authManager.findUserById(payload.userID);
       if (!user) {
         throw new CustomAPIError("Unauthorized request", 401);
       }

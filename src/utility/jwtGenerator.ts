@@ -1,5 +1,5 @@
 import jwt, { type Secret } from "jsonwebtoken";
-import { TodoManager } from "../db/todo.js";
+import { UserAuthenticationManager } from "../model/authenticationModel.js";
 
 /**
  * Generates an access JWT for a given user ID.
@@ -38,7 +38,7 @@ export const generateAccessTokenAndRefreshToken = async (
 }> => {
   const accessToken = accessJWTGenerator(userID);
   const refreshToken = refreshJWTGenerator(userID);
-  const todoManager = TodoManager.getInstance();
-  await todoManager.addRefreshToken(userID, refreshToken);
+  const authManager = UserAuthenticationManager.getInstance();
+  await authManager.addRefreshToken(userID, refreshToken);
   return { accessToken, refreshToken };
 };

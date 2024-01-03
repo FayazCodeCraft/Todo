@@ -1,9 +1,8 @@
 import { type NextFunction, type Response } from "express";
 import { asyncWrapper } from "../utility/async-wrapper.js";
-import { TodoManager } from "../db/todo.js";
-import { generateUniqueId } from "../utility/generateUniqueId.js";
-import { createCustomError } from "../errors/custom-error.js";
 import { type AuthenticatedRequest } from "../middlewares/authentication.js";
+import { TodoManager } from "../model/todoModel.js";
+import { createCustomError } from "../errors/custom-error.js";
 /**
  * Create a new Todo by handling a request.
  * @param {Request} req - The Express request object.
@@ -20,17 +19,8 @@ export const createTodo = asyncWrapper(
     const userId = req.user!.userID;
     const todoManager = TodoManager.getInstance();
     const newTodo = await todoManager.validateTodo(req.body);
-    // if newTodo has default id(1) then generate uniqueID
-    if (newTodo.id === 1) {
-      newTodo.id = await generateUniqueId(userId);
-    }
-    const idExist = await todoManager.idExist(userId, newTodo.id);
-    if (!idExist) {
-      const todo = await todoManager.createTodo(userId, newTodo);
-      res.status(201).json(todo);
-    } else {
-      throw createCustomError(`Id: ${newTodo.id} already exists`, 400);
-    }
+    const todo = await todoManager.createTodo(userId, newTodo);
+    res.status(201).json(todo);
   },
 );
 
@@ -87,12 +77,11 @@ export const getTodo = asyncWrapper(
     const userId = req.user!.userID;
     const id = parseInt(req.params.todoId);
     const todoManager = TodoManager.getInstance();
-    const idExist = await todoManager.idExist(userId, id);
-    if (idExist) {
-      const todo = await todoManager.getTodo(userId, id);
-      res.status(200).json(todo);
-    } else {
+    const todo = await todoManager.getTodo(userId, id);
+    if (!todo) {
       throw createCustomError(`Id: ${id} Not Found`, 404);
+    } else {
+      res.status(200).json(todo);
     }
   },
 );
@@ -114,13 +103,13 @@ export const updateTodo = asyncWrapper(
     const userId = req.user!.userID;
     const id = parseInt(req.params.todoId);
     const todoManager = TodoManager.getInstance();
-    const idExist = await todoManager.idExist(userId, id);
-    if (idExist) {
-      const todo = await todoManager.validateTodo(req.body);
+    const todo = await todoManager.validateTodo(req.body);
+    const todoExist = await todoManager.getTodo(userId, id);
+    if (!todoExist) {
+      throw createCustomError(`Id: ${id} Not Found`, 404);
+    } else {
       const updatedTodo = await todoManager.updateTodo(userId, id, todo);
       res.status(200).json(updatedTodo);
-    } else {
-      throw createCustomError(`Id: ${id} Not Found`, 404);
     }
   },
 );
@@ -141,12 +130,12 @@ export const deleteTodo = asyncWrapper(
     const userId = req.user!.userID;
     const id = parseInt(req.params.todoId);
     const todoManager = TodoManager.getInstance();
-    const idExist = await todoManager.idExist(userId, id);
-    if (idExist) {
+    const todoExist = await todoManager.getTodo(userId, id);
+    if (!todoExist) {
+      throw createCustomError(`Id: ${id} Not Found`, 404);
+    } else {
       await todoManager.deleteTodo(userId, id);
       res.status(200).json({ message: `Todo with ${id} deleted successfully` });
-    } else {
-      throw createCustomError(`Id: ${id} Not Found`, 404);
     }
   },
 );
